@@ -10,6 +10,11 @@ describe Game do
       expect(game.player_1).to eq player_1
       expect(game.player_2).to eq player_2
     end
+
+    it 'is player 1\'s turn' do
+      expect(game.turn).to eq player_1
+    end
+
   end
 
   describe '#attack' do
@@ -19,4 +24,14 @@ describe Game do
       subject.attack(player_2)
     end
   end
+
+describe '#turn' do
+  it 'changes turn' do
+    allow(player_2).to receive(:receive_damage)
+    subject.attack(player_2)
+    expect(game.turn).to eq player_2
+  end
+end
+
+
 end
