@@ -1,5 +1,20 @@
-<a href = "/attack">Attack</a>
 
-<%= @player_1_name %> vs. <%= @player_2_name %>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+</head>
 
-<%= @player_2_name %>: <%= @player_2_hp %>HP
+<body style="font-family: 'Roboto Slab', serif; width: 500px; margin: 30px auto; text-align: center;">
+
+  <form action="/attack" method="post">
+    <input type="submit" value="Attack" style = "margin-top: 15px;">
+  </form>
+
+
+  <p><%= @player_1_name %> vs. <%= @player_2_name %></p>
+  <p><%= @player_2_name %>: <%= @player_2_hp %>HP</p>
+
+  <% if @player1_attacks %>
+    <p> Player 1 attacked Player 2</p>
+  <% end %>
+
+</body>

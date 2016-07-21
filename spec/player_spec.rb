@@ -9,4 +9,12 @@ describe Player do
     end
   end
 
+  describe '#receive_damage' do
+    it 'takes damage' do
+      mike.receive_damage
+      expect(mike.hit_points).to eq 90
+    end
+  end
+
+
 end
