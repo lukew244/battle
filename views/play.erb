@@ -5,19 +5,21 @@
 
 <body style="font-family: 'Orbitron', sans-serif; width: 500px; margin: 30px auto; text-align: center;">
 
-<h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
+  <h2> <%= @game.player1.name%> <%=@game.player1.hitpoints %>hp</h2>
+  <h2> <%= @game.player2.name%> <%=@game.player2.hitpoints %>hp </h2>
 
-<h2> <%= @game.player1.name%> <%=@game.player1.hitpoints %>hp</h2>
-<h2> <%= @game.player2.name%> <%=@game.player2.hitpoints %>hp </h2>
+  <% if @game.game_over %>
+    <p><%=@game.players.first.name%> is dead!</p>
+  <% else %>
+    <form action="/player1_attacks" method="post">
+      <input type="submit" value="Attack" style = "margin-top: 15px;">
+    </form>
 
-
-<form action="/player1_attacks" method="post">
-  <input type="submit" value="Attack" style = "margin-top: 15px;">
-</form>
-
+    <% if @player_attacks%>
+      <p><%= @game.players.last.name %> attacked <%= @game.players.first.name %></p>
+        <p><%= @game.players.first.name %> has <%=@game.players.first.hitpoints %>hp </p>
+        <p>Turn: <%= @game.players.first.name %></p>
+    <% end %>
+  <% end %>
 </body>
-
-<% if @player1_attacks%>
-  <p>Player 1 attacked player 2</p>
-    <p>Player 2 has <%=@game.player2.hitpoints %>hp </p>
-<% end %>
