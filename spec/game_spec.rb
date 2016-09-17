@@ -58,9 +58,3 @@ describe Game do
 
 
 end
-
-#
-# it 'has two players' do
-#   expect(player1.name).to eq "Luke"
-#   expect(player2.name).to eq "Jess"
-# end
